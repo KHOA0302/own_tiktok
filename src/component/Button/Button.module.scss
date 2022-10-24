@@ -1,0 +1,50 @@
+.wrapper {
+    height: 36px;
+    font-size: 1.6rem;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    + .wrapper {
+        margin-left: 16px;
+    }
+}
+
+.primary {
+    min-width: 110px;
+    font-weight: 600;
+    border-radius: 4px;
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.primary-outline {
+}
+
+.transparent {
+    display: flex;
+    min-width: 110px;
+    padding: 0 16px;
+    align-items: center;
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 24px;
+    color: var(--text-color);
+    background: transparent;
+    border: 1px solid rgba(22, 24, 35, 0.12);
+    border-radius: 2px;
+}
+
+.icon {
+    height: 20px;
+    width: 20px;
+    margin-right: 8px;
+}
+
+.icon-button {
+    display: flex;
+    align-items: center;
+}
+
+.stranparent-outline {
+}

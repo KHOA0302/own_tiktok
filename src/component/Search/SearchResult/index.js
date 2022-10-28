@@ -4,12 +4,11 @@ import Styles from './SearchResult.module.scss'
 
 const cx = classNames.bind(Styles)
 
-function SearchResult({ data, ...props }) {
-    console.log(data)
+function SearchResult({ ...props }) {
     return (
         <div className={cx('wrapper')} {...props}>
             <div className={cx('search-result')}>
-                <Account data={data} />
+                <Account />
             </div>
         </div>
     )

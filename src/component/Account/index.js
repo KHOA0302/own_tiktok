@@ -4,7 +4,6 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(Styles)
 
 function Account({ data }) {
-    console.log(data)
     return (
         <div className={cx('account')}>
             <div className={classNames('wrapper')}>

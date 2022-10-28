@@ -53,6 +53,19 @@
     width: 40px;
 }
 
+.load {
+    animation: spinner 0.8s linear infinite;
+}
+
+@keyframes spinner {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .separate-element {
     width: 1px;
     height: 28px;

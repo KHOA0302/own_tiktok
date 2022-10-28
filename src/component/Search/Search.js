@@ -4,33 +4,51 @@ import Tippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
 import SearchResult from '~/component/Search/SearchResult';
 import { useState, useRef, useEffect } from 'react';
-
 import { SearchIcon, LoadIcon, ClearIcon } from '~/Icons'
+import { useDebounce } from '~/hooks';
 
 const cx = classNames.bind(Styles)
+
 
 function Search() {
     const [load, setLoad] = useState(false)
     const [clear, setClear] = useState(false)
     const [inputValue, setInputValue] = useState('')
-    const [searchResult, setSearchResult] = useState([1])
+    const [searchResult, setSearchResult] = useState([])
     const [showSearchResult, setShowSearchResult] = useState(true)
+
+    const debounced = useDebounce(inputValue, 500)
 
     const inputRef = useRef()
 
     useEffect(() => {
-        if (inputValue === '') {
-            setClear(false)
+        if (!debounced.trim()) {
+            return
         }
 
-    }, [inputValue])
+        setLoad(true)
+
+
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounced)}&type=less`)
+            .then(res => res.json())
+            .then(res => {
+                setSearchResult(res.data)
+                setLoad(false)
+            })
+            .catch(err => setLoad(false))
+            
+    }, [debounced])
 
     const handleClearOn = (value) => {
+        if (value === '') {
+            setSearchResult([])
+        }
         setInputValue(value)
         setClear(true)
     }
 
     const handleClearOut = () => {
+        setSearchResult([])
         setClear(false)
         setInputValue('')
         inputRef.current.focus()
@@ -49,7 +67,7 @@ function Search() {
                 offset={[0, 0]}
                 interactive
                 render={attrs => (
-                    <SearchResult tabIndex="-1" {...attrs} />
+                    <SearchResult tabIndex="-1" {...attrs} data={searchResult} />
                 )}
                 onClickOutside={() => setShowSearchResult(false)}
             >
@@ -65,7 +83,10 @@ function Search() {
                                 onFocus={handleShowResult}
                             />
 
-                            <span className={cx('icon')}>{clear && <ClearIcon onClick={handleClearOut} />}</span>
+                            <span className={cx('icon')}>
+                                {!load && clear && <ClearIcon onClick={handleClearOut} />}
+                                {load && <LoadIcon className={cx('load')} />}
+                            </span>
 
                             <span className={cx('separate-element')}></span>
                             <button className={cx('button-element')}>

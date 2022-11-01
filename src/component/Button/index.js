@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind'
-import Style from './Button.module.scss';
+import Style from './Button.module.scss';   
 
 const cx = classNames.bind(Style)
 
@@ -18,9 +18,9 @@ function Button({
     })
     return (
         <button className={classes} href={href} {...props}>
-            {icon && <span className={cx('icon')}>{icon}</span>}
+            {icon && <span>{icon}</span>}
             {title}
-        </ button >
+        </button >
     )
 }
 

@@ -1,0 +1,36 @@
+.wrapper {
+    background: rgb(255, 255, 255);
+    border-radius: 8px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 4px 16px;
+    transition: opacity 300ms ease 0s;
+}
+
+.option {
+    min-width: 223px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    padding: 8px 0px;
+    margin: 0px;
+    list-style: none;
+}
+
+.item-wrapper {
+    display: flex;
+    padding: 10px 8px 10px 16px;
+    -webkit-box-pack: justify;
+    align-items: center;
+}
+
+.item {
+}
+
+.icon {
+    margin-right: 8px;
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+}
+
+.title {
+}

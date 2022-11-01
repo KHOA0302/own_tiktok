@@ -17,11 +17,15 @@ function App() {
               Layout = route.layout
             }
 
-            return <Route key={index} path={route.path} element={
-              <Layout>
-                {route.element}
-              </Layout>} />
-          })}
+            return (
+              <Route key={index} path={route.path} element={
+                <Layout>
+                  {route.element}
+                </Layout>}
+              />
+            )
+          })
+          }
         </Routes>
       </div>
     </Router>

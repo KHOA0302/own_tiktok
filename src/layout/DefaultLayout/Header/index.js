@@ -11,6 +11,8 @@ import SeeMore from '~/component/SeeMore';
 
 const cx = classNames.bind(Styles)
 
+
+
 function Header({ children }) {
     return (
         <header className={cx('wrapper')}>
@@ -27,6 +29,8 @@ function Header({ children }) {
 
                     <Tippy
                         visible={true}
+                        arrow={true}
+                        duration={[0, 1000]}
                         offset={[-90, 4]}
                         interactive
                         render={attrs => (

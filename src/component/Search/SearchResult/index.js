@@ -12,7 +12,7 @@ function SearchResult({ data, ...props }) {
             </div>
             <div className={cx('search-result')}>
                 {data.map((account, index) => {
-                    return <Account key={index} data={account} />
+                    return <Account key={index} data={account} mediumAvatar hover/>
                 })}
             </div>
         </div>

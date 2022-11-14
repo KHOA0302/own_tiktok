@@ -1,6 +1,11 @@
 .account {
     max-width: 361px;
-    height: 60px;
+}
+
+.hover {
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+    }
 }
 
 .wrapper {
@@ -9,12 +14,37 @@
     align-items: center;
 }
 
+.big-avatar > .wrapper {
+}
+
+.medium-avatar > .wrapper {
+    height: 60px;
+}
+
+.small-avatar > .wrapper {
+    height: 48px;
+    padding: 8px;
+}
+
 .avatar {
     border-radius: 999px;
     overflow: hidden;
+    margin-right: 12px;
+}
+
+.big-avatar .avatar {
+    width: 56px;
+    height: 56px;
+}
+
+.medium-avatar .avatar {
     width: 40px;
     height: 40px;
-    margin-right: 12px;
+}
+
+.small-avatar .avatar {
+    width: 32px;
+    height: 32px;
 }
 
 .img {
@@ -26,6 +56,8 @@
 }
 
 .nickname {
+    display: flex;
+    align-items: center;
     font-size: 1.6rem;
     line-height: 22px;
     font-weight: 600;

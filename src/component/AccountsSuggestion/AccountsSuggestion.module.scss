@@ -1,0 +1,228 @@
+.account-suggestion-container {
+    position: relative;
+    &::after {
+        content: '';
+        position: absolute;
+        left: 8px;
+        right: 8px;
+        bottom: 0;
+        height: 1px;
+        background: rgba(22, 24, 35, 0.12);
+        -webkit-transform: scaleY(0.5);
+        -moz-transform: scaleY(0.5);
+        -ms-transform: scaleY(0.5);
+        transform: scaleY(0.5);
+    }
+}
+
+.account-suggestion {
+    position: relative;
+    padding: 16px 0;
+}
+
+.title-account-suggestion {
+    display: block;
+    color: rgba(22, 24, 35, 0.75);
+    font-weight: 600;
+    padding: 0 8px;
+    font-size: 1.4rem;
+    line-height: 20px;
+}
+
+.account {
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.watch-more {
+    display: flex;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 0px 8px;
+    margin-top: 8px;
+    cursor: pointer;
+    color: rgb(254, 44, 85);
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 20px;
+}
+
+.account-hover-fade {
+    background-color: white;
+    transition-property: background-color;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+}
+
+.change {
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.05);
+    }
+}
+
+.loading-account {
+    display: flex;
+    padding: 8px;
+    align-items: center;
+}
+
+.loading-avatar {
+    width: 32px;
+    height: 32px;
+    background-color: rgba(22, 24, 35, 0.06);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-right: 12px;
+}
+
+.loading-avatar-effect {
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    background-image: linear-gradient(
+        90deg,
+        rgba(22, 24, 35, 0) 0%,
+        rgba(22, 24, 35, 0.04) 50%,
+        rgba(22, 24, 35, 0) 100%
+    );
+    animation-name: loading;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+}
+
+.loading-info {
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 48px;
+}
+
+.loading-nickname {
+    width: 107px;
+    height: 12px;
+    background-color: rgba(22, 24, 35, 0.06);
+    border-radius: 4px;
+}
+
+.loading-fullname {
+    width: 66px;
+    height: 12px;
+    overflow: hidden;
+    background-color: rgba(22, 24, 35, 0.06);
+    border-radius: 4px;
+}
+
+@keyframes loading {
+    0% {
+        transform: translateX(-200px);
+    }
+    100% {
+        transform: translateX(200px);
+    }
+}
+
+.loading-name-effect {
+    width: 66px;
+    height: 12px;
+    background-image: linear-gradient(
+        90deg,
+        rgba(22, 24, 35, 0) 0%,
+        rgba(22, 24, 35, 0.04) 50%,
+        rgba(22, 24, 35, 0) 100%
+    );
+    animation-name: loading;
+    animation-duration: 1.8s;
+    animation-iteration-count: infinite;
+}
+
+.profile-wrapper {
+    width: 320px;
+}
+
+.profile {
+    background-color: aliceblue;
+    padding: 20px;
+    background: rgb(255, 255, 255);
+    box-shadow: rgb(0 0 0 / 12%) 0px 4px 16px;
+    border-radius: 8px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.profile-avatar {
+    width: 44px;
+    height: 44px;
+    overflow: hidden;
+    border-radius: 999px;
+}
+
+.profile-img {
+    width: 44px;
+    height: 44px;
+}
+
+.profile-follow-btn {
+}
+
+.profile-name {
+}
+
+.profile-nickname {
+    display: flex;
+    align-items: center;
+    color: rgba(22, 24, 35, 1);
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 22px;
+}
+
+.profile-tick {
+    margin-left: 4px;
+}
+
+.profile-fullname {
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 20px;
+}
+
+.profile-rank {
+    margin-top: 8px;
+}
+
+.profile-followers {
+    display: inline-block;
+    font-weight: 700;
+    margin-right: 6px;
+    font-size: 17px;
+    line-height: 20px;
+}
+
+.profile-followers:nth-child(2) {
+    margin-right: 14px;
+    color: rgba(22, 24, 35, 0.75);
+    font-size: 17px;
+    line-height: 20px;
+}
+
+.profile-like {
+    display: inline-block;
+    font-weight: 700;
+    margin-right: 6px;
+    font-size: 17px;
+    line-height: 20px;
+}
+
+.profile-like:nth-child(4) {
+    margin-right: 14px;
+    color: rgba(22, 24, 35, 0.75);
+    font-size: 1.7rem;
+    line-height: 20px;
+}

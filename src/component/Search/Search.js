@@ -6,6 +6,7 @@ import SearchResult from '~/component/Search/SearchResult';
 import { useState, useRef, useEffect } from 'react';
 import { SearchIcon, LoadIcon, ClearIcon } from '~/Icons'
 import { useDebounce } from '~/hooks';
+import { search } from '~/apiServices/searchService';
 
 const cx = classNames.bind(Styles)
 
@@ -29,15 +30,14 @@ function Search() {
 
         setLoad(true)
 
+        const fetchAPI = async () => {
+            setLoad(true)
+            const res = await search(debounced)
+            setSearchResult(res)
+            setLoad(false)
+        }
 
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounced)}&type=less`)
-            .then(res => res.json())
-            .then(res => {
-                setSearchResult(res.data)
-                setLoad(false)
-            })
-            .catch(err => setLoad(false))
-            
+        fetchAPI()
     }, [debounced])
 
     const handleClearOn = (value) => {
@@ -91,7 +91,7 @@ function Search() {
 
                             <span className={cx('separate-element')}></span>
                             <button className={cx('button-element')}>
-                                <SearchIcon />
+                                <SearchIcon fill={!!inputValue ? 'rgba(22, 24, 35, .75)' : 'rgba(22, 24, 35, .34)'} />
                             </button>
                             <div className={cx('input-outline-element')}></div>
                         </form>

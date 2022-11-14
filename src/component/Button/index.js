@@ -18,7 +18,7 @@ function Button({
     })
     return (
         <button className={classes} href={href} {...props}>
-            {icon && <span>{icon}</span>}
+            {icon && icon}
             {title}
         </button >
     )

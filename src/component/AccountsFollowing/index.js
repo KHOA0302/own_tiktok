@@ -1,8 +1,8 @@
 import Styles from './AccountsFollowing.module.scss'
 import classNames from 'classnames/bind'
 import { useState, useEffect } from 'react'
-import { search } from '~/apiServices/searchService'
-import { randomText } from '../CreateRandom/inex'
+import { accountsSuggestion } from '~/apiServices/accountsSuggestionService'
+import { getRandomInt } from '../CreateRandom/inex'
 import Account from '../Account'
 
 const cx = classNames.bind(Styles)
@@ -14,9 +14,9 @@ function AccountsFollowing() {
 
     useEffect(() => {
 
-        const q = randomText(1)
         const fetchAPI = async () => {
-            const res = await search(q, 'more')
+            const page = getRandomInt(1, 3)
+            const res = await accountsSuggestion(page, 20)
             setAccountsBase(res)
             const timeId = setTimeout(() => {
                 setLoading(false)
@@ -68,7 +68,7 @@ function AccountsFollowing() {
                 {!loading && <div className={cx('account')}>
                     {
                         accountRendering.map(account => {
-                            return <Account key={account.id} data={account} smallAvatar hover/>
+                            return <Account key={account.id} data={account} smallAvatar hover />
                         })
                     }
                 </div>}

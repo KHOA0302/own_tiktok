@@ -1,11 +1,8 @@
 import Styles from './SideBar.module.scss'
 import classNames from 'classnames/bind'
 import { FollowerIcon, HashTagIcon, HomeIcon, LiveBigIcon, NoteIcon } from '~/Icons'
-import Account from '~/component/Account'
 import TippyHeadless from '@tippyjs/react/headless'
-import { search } from '~/apiServices/searchService'
 import { useEffect, useState } from 'react'
-import { randomText } from '~/component/CreateRandom/inex'
 import AccountsSuggestion from '~/component/AccountsSuggestion'
 import AccountsFollowing from '~/component/AccountsFollowing'
 

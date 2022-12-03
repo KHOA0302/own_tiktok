@@ -1,8 +1,22 @@
+import { forwardRef, useState } from 'react'
+import images from '~/assets/imgs/index'
 
-function Img({ src = 'https://lh3.googleusercontent.com/pqF7DdSwANIcz7_oj22T5Vx7Dho-q_4QO8U0JQG59D-eQpXiLl3PqT8Cj9jcNMg4_vle3cNgAsMoFCTlr8We7MAlOVEIp5KT5GZwZXLr7csfC1enZkuPZnOCNl-NWLLICRpkSMH6FgEppRHenGcAtfNDOpcKFkmzNDlWMBQaHInVPdVVmOEypTWQWvV1JuVizpa38XD-z-Vjz5Q5HGIUpPCs0U2qEarc9gUURCAJp8ZVDecTYk3IhQrrIoPYrvTbc2Yj7QtKHqiRdoV9-JOY-r9pmtE66F-lWwJs6DfSuOIeia8wZMI67JARaU0kmb6GKSJq5WmKbI9iK29T4bVGqeu1RXCNjkX_nofNgLW4QaUOSt46aK1J8Mqx6XTFt2nxf5IG8K_uon2ll9kOkjn8rDJEmcbCuXTKCKTvPxNufuZmkBI-Popg3IFZqzdVhfVgoPAZ-ORJIUNEh11H0KT2z1OcFTPrVDNltSiuN1s_nonb26w5eW9p6Pg6zbutbRGnIUshb6c3cIGBWhKTn-dRa1p4dLRpsWap893ItqCbHXOvADqyIQWDpa93riyZwhZt3PnBGfw5XzRRzXbMvl5seEi88lTiCNSqe8-p2ZgEHSI_hcsNxQQC8upI8Ar-R_YpLV0gSP2qtFO5IkY41sE0z3ofVkq7pIcU0n9GqriVyZrjcifAX-VG-u5Xzzny5rpIs-Az2SJDAeTwKJwlvrU4EJsDSrspXZGa8cd8r-z-heSD4z1p1gLwAlfsyRByCQDZtx2LmceeNsxoTW_ud9vue-PQrMvl4MkOYdXBcijT3ETO-VPrB0vjRli_p84ad5uSpXOqJweTubNrdzsYjwsPxsnVxW1UlEXfPKSdcpKbX51AOQuzP1-3gNpj_s0MiJV5LN1iHJ7f007623uitFh_KdzlL7UL1Usvblolw_20UawD=w778-h929-no?authuser=0', alt, width, height, className }) {
+function Img({ src, alt, width, height, className }, ref) {
+    const [fallBack, setFallBack] = useState('')
+
+    const handleError = () => {
+        setFallBack(images.defaultImg)
+    }
+
     return (
-        <img className={className} src={src} alt={alt} />
+        <img
+            className={className}
+            src={fallBack || src}
+            alt={alt}
+            ref={ref}
+            onError={handleError}
+        />
     )
 }
 
-export default Img
+export default forwardRef(Img)

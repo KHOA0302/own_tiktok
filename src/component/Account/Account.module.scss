@@ -8,6 +8,11 @@
     }
 }
 
+.pointer-event {
+    pointer-events: none;
+}
+
+
 .wrapper {
     display: flex;
     padding: 9px 16px;

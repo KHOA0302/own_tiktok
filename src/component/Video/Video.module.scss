@@ -1,0 +1,164 @@
+.wrapper {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: flex-start;
+    -webkit-box-align: flex-start;
+    -ms-flex-align: flex-start;
+    align-items: flex-start;
+    padding: 20px 0;
+    position: relative;
+    max-width: 692px;
+}
+
+.avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    a {
+        width: 56px;
+        height: 56px;
+        .img {
+            width: 56px;
+            height: 56px;
+        }
+    }
+}
+
+.main {
+    // width: 624px;
+    margin-left: 12px;
+}
+
+.info {
+    margin-right: 114px;
+}
+
+.user-name {
+    .nickname {
+        display: inline-block;
+        font-weight: 700;
+        font-size: 1.8rem;
+        line-height: 25px;
+        margin-right: 8px;
+
+        .tick-icon {
+            margin-left: 4px;
+        }
+    }
+
+    .fullname {
+        font-weight: 400;
+        font-size: 1.4rem;
+        display: inline-block;
+        line-height: 28px;
+    }
+}
+
+.title {
+    font-size: 1.6rem;
+    line-height: 22px;
+    font-weight: 400;
+}
+
+.music-link {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.6rem;
+    line-height: 22px;
+    margin-top: 4px;
+    margin-bottom: 12px;
+
+    .music-icon {
+        display: flex;
+        margin-right: 4px;
+    }
+}
+
+.video {
+    display: flex;
+    // width: 624px;
+    align-items: flex-end;
+}
+
+.video-container {
+    position: relative;
+    height: 600px;
+    margin-right: 20px;
+    background-size: cover;
+    -webkit-background-size: cover;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+
+    .video-wrapper {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+
+        .clip {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    
+    .video-thumb {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+    }
+
+    .control-btn {
+    }
+}
+
+.button {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+
+    .like-button,
+    .comment-button,
+    .share-button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.like-icon,
+.share-icon,
+.comment-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin-top: 8px;
+    margin-bottom: 6px;
+    border-radius: 50%;
+    background-color: rgba(22, 24, 35, 0.06);
+    font-size: 2.4rem;
+}
+
+.count-number {
+    color: rgba(22, 24, 35, 0.75);
+    font-size: 1.2rem;
+    line-height: 17px;
+    text-align: center;
+}

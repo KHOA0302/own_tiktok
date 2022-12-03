@@ -3,11 +3,12 @@ import classNames from 'classnames/bind'
 import { useEffect, useState } from 'react'
 import TippyHeadless from '@tippyjs/react/headless'
 import Account from '~/component/Account'
-import { search } from '~/apiServices/searchService'
-import { randomText } from '~/component/CreateRandom/inex'
 import Img from '~/Img'
 import Button from '../Button'
 import { TickIcon } from '~/Icons'
+import { accountsSuggestion } from '~/apiServices/accountsSuggestionService'
+import { getRandomInt } from '../CreateRandom/inex'
+
 
 const cx = classNames.bind(Styles)
 
@@ -19,10 +20,9 @@ function AccountsSuggestion() {
     const [clearTime, setClearTime] = useState()
 
     useEffect(() => {
-
-        const q = randomText(1)
         const fetchAPI = async () => {
-            const res = await search(q, 'more')
+            const page = getRandomInt(1, 5)
+            const res = await accountsSuggestion(page, 10)
             setAccountsBase(res)
             const timeId = setTimeout(() => {
                 setLoading(false)
@@ -80,10 +80,12 @@ function AccountsSuggestion() {
                                 const handleChangeAccountBrg = (id) => {
                                     setChangeAccountBgr(id)
                                     const timeID = setTimeout(() => setChangeAccountBgr(), 1000)
+
                                     setClearTime(timeID)
-                                    }
+                                }
 
                                 const handleClearTimeOut = () => {
+                                    console.log(clearTime);
                                     clearTimeout(clearTime)
                                 }
 
@@ -135,8 +137,9 @@ function AccountsSuggestion() {
                                             onMouseEnter={() => handleChangeAccountBrg(account.id)
                                             }
                                             onMouseOut={handleClearTimeOut}
+
                                         >
-                                            <Account data={account} smallAvatar />
+                                            <Account data={account} smallAvatar pointerEvent />
                                         </div>
                                     </TippyHeadless>
                                 )

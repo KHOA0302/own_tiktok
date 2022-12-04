@@ -24,7 +24,7 @@ function App() {
                 </Layout>}
               />
             )
-          })
+          })  
           }
         </Routes>
       </div>

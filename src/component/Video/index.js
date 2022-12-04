@@ -3,18 +3,22 @@ import classNames from 'classnames/bind';
 import Img from '~/Img';
 import { CommentIcon, LikeIcon, ShareIcon, TickIcon, NoteIcon } from '~/Icons';
 import { forwardRef } from 'react';
+import images from '~/assets/imgs';
 
-const cx = classNames.bind(Styles);
+const cx = classNames.bind(Styles)
 
 function Video({ data }, ref) {
-    const user = data.user;
+    const user = data.user
+
+    const img = new Image()
+    img.src = data.thumb_url
+
     return (
         <div className={cx('wrapper')}>
-            <div className={cx('avatar')}>
-                <a href={'user'}>
-                    <Img src={user.avatar} className={cx('img')} />
-                </a>
-            </div>
+
+            <a href={'user'} className={cx('avatar')}>
+                <Img src={user.avatar} className={cx('img')} />
+            </a>
 
             <div className={cx('main')}>
                 <div className={cx('info')}>
@@ -46,18 +50,18 @@ function Video({ data }, ref) {
                 </div>
 
                 <div className={cx('video')}>
-                    <div className={cx('video-container')}>
-                        <Img className={cx('video-thumb')} src={data} />
-                        <div className={cx('video-wrapper')}>
-                            <video
-                                ref={ref}
-                                className={cx('clip')}
-                                controls
-                                muted
-                            >
-                                <source src={data.file_url} />
-                            </video>
-                        </div>
+                    <div className={cx('video-container', {
+                        "vertical": img.width > img.height,
+                        "horizontal": img.width < img.height,
+                    })}>
+
+                        <p className={cx('video-space')}></p>
+
+                        <Img className={cx('video-thumb')} src={data.thumb_url} />
+
+                        <video ref={ref} className={cx('clip')} controls muted >
+                            <source src={data.file_url} />
+                        </video>
 
                         <div className={cx('control-btn')}></div>
                     </div>

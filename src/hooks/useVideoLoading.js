@@ -1,5 +1,5 @@
 import { videos } from '~/apiServices/videosService'
-import { useEffect, useState, useRef, useCallback, memo } from 'react'
+import { useEffect, useState, useRef, useCallback } from 'react'
 
 function useVideoLoading(type) {
     const [load, setLoad] = useState(true)
@@ -26,12 +26,12 @@ function useVideoLoading(type) {
 
         fetchAPI()
         setLoad(false)
-        
+
     }, [type, page])
 
     const observer = useRef()
 
-    const lastVideoElementRef = useCallback(node => {
+    const lastVideoOnPageRef = useCallback(node => {
         if (load) return
         if (observer.current) observer.current.disconnect()
         observer.current = new IntersectionObserver(entries => {
@@ -44,7 +44,7 @@ function useVideoLoading(type) {
         }
     }, [load, hasMore])
 
-    return { listVideo, load, lastVideoElementRef }
+    return { listVideo, load, lastVideoOnPageRef }
 }
 
 export default useVideoLoading

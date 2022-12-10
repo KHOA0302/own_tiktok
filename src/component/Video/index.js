@@ -50,6 +50,7 @@ function Video({ data }, ref) {
                 </div>
 
                 <div className={cx('video')}>
+
                     <div className={cx('video-container', {
                         "vertical": img.width > img.height,
                         "horizontal": img.width < img.height,
@@ -57,7 +58,7 @@ function Video({ data }, ref) {
 
                         <p className={cx('video-space')}></p>
 
-                        <Img className={cx('video-thumb')} src={data.thumb_url} />
+                        <Img className={cx('video-thumb')} src={data.thumb_url || images.defaultImg} />
 
                         <video ref={ref} className={cx('clip')} controls muted >
                             <source src={data.file_url} />

@@ -1,20 +1,14 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback } from 'react'
 
 const useAutoPlay = (options) => {
-    const [isOnView, setIsOnView] = useState()
 
     const videoOnViewRef = useCallback(node => {
 
         let observer = new IntersectionObserver(entries => {
-
-            entries.forEach(entry => {
-                console.log(entry.target)
-                entry.target.pause()
-            })
-
             if (entries[0].isIntersecting) {
-                setIsOnView(true)
                 entries[0].target.play()
+            } else {
+                entries[0].target.pause()
             }
         }, options)
 
@@ -22,9 +16,9 @@ const useAutoPlay = (options) => {
             observer.observe(node)
         }
 
-    }, [])
+    }, [options])
 
-    return { isOnView, videoOnViewRef }
+    return { videoOnViewRef }
 }
 
 export default useAutoPlay

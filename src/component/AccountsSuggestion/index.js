@@ -85,7 +85,7 @@ function AccountsSuggestion() {
                                 }
 
                                 const handleClearTimeOut = () => {
-                                    console.log(clearTime);
+                                    
                                     clearTimeout(clearTime)
                                 }
 

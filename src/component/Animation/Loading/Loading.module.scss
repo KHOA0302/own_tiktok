@@ -1,0 +1,67 @@
+.wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 40px;
+    height: 20px;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.red-not,
+.blue-not {
+    position: absolute;
+    width: 20px;
+    aspect-ratio: 1;
+    border: solid 1px #606060;
+    border-radius: 9999px;
+    mix-blend-mode: darken;
+    animation-duration: 1.2s;
+    animation-timing-function: ease;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-fill-mode: none;
+    animation-play-state: running;
+}
+
+.red-not {
+    left: 0;
+    background: #fe2c55;
+    animation-name: redNot;
+}
+
+.blue-not {
+    right: 0;
+    background: #25f4ee;
+    animation-name: blueNot;
+}
+
+@keyframes redNot {
+    0% {
+        width: 20px;
+        transform: translateX(0);
+    }
+    25% {
+        width: 15px;
+    }
+    50% {
+        width: 20px;
+        transform: translateX(75%);
+    }
+}
+
+@keyframes blueNot {
+    0% {
+        width: 20px;
+        transform: translateX(0);
+    }
+    25% {
+        width: 15px;
+    }
+    50% {
+        width: 20px;
+        transform: translateX(-75%);
+    }
+}

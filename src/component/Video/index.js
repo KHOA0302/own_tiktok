@@ -2,16 +2,13 @@ import Styles from './Video.module.scss';
 import classNames from 'classnames/bind';
 import Img from '~/Img';
 import { CommentIcon, LikeIcon, ShareIcon, TickIcon, NoteIcon } from '~/Icons';
-import { forwardRef } from 'react';
+import { forwardRef, useState } from 'react';
 import images from '~/assets/imgs';
 
 const cx = classNames.bind(Styles)
 
-function Video({ data }, ref) {
+function Video({ data, isVertical = false, dataId }, ref) {
     const user = data.user
-
-    const img = new Image()
-    img.src = data.thumb_url
 
     return (
         <div className={cx('wrapper')}>
@@ -52,15 +49,15 @@ function Video({ data }, ref) {
                 <div className={cx('video')}>
 
                     <div className={cx('video-container', {
-                        "vertical": img.width > img.height,
-                        "horizontal": img.width < img.height,
+                        "vertical": isVertical,
+                        "horizontal": !isVertical,
                     })}>
 
                         <p className={cx('video-space')}></p>
 
                         <Img className={cx('video-thumb')} src={data.thumb_url || images.defaultImg} />
 
-                        <video ref={ref} className={cx('clip')} controls muted >
+                        <video ref={ref} className={cx('clip')} data-id={dataId} controls muted loop>
                             <source src={data.file_url} />
                         </video>
 
@@ -109,7 +106,7 @@ function Video({ data }, ref) {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 

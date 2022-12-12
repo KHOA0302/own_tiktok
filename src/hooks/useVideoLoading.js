@@ -1,50 +1,62 @@
 import { videos } from '~/apiServices/videosService'
 import { useEffect, useState, useRef, useCallback } from 'react'
 
+const options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 1,
+}
+
 function useVideoLoading(type) {
-    const [load, setLoad] = useState(true)
     const [hasMore, setHasMore] = useState(false)
     const [listVideo, setListVideo] = useState([])
+    const [listVideoRender, setListVideoRender] = useState([])
+    const [load, setLoad] = useState(false)
     const [page, setPage] = useState(1)
 
     useEffect(() => {
-        setLoad(true)
-
         const fetchAPI = async () => {
             const res = await videos(type, page)
-
-            setListVideo(prev => {
-                if (prev.length && prev[prev.length - 15].id === res[0].id) {
-                    return [...prev]
-                } else {
-                    return [...prev, ...res]
-                }
-            })
-
+            setListVideo(res)
             setHasMore(res.length > 0)
         }
-
         fetchAPI()
-        setLoad(false)
-
     }, [type, page])
 
-    const observer = useRef()
+    useEffect(() => {
+        if (page > 1) {
+            setLoad(true)
+            setTimeout(() => {
+                if (listVideoRender.length && listVideoRender[listVideoRender.length - listVideo.length].id === listVideo[0].id) {
+                    console.log('It\'s loop')
+                    return
+                } else {
+                    setListVideoRender(prev => {
+                        return [...prev, ...listVideo]
+                    })
+                }
 
+                setLoad(false)
+            }, 1200)
+        } else {
+            setListVideoRender(listVideo)
+        }
+    }, [listVideo, page, listVideoRender])
+
+    const observer = useRef()
     const lastVideoOnPageRef = useCallback(node => {
-        if (load) return
         if (observer.current) observer.current.disconnect()
         observer.current = new IntersectionObserver(entries => {
             if (entries[0].isIntersecting && hasMore) {
                 setPage(prev => prev + 1)
             }
-        })
+        }, options)
         if (node) {
             observer.current.observe(node)
         }
-    }, [load, hasMore])
+    }, [hasMore])
 
-    return { listVideo, load, lastVideoOnPageRef }
+    return { listVideoRender, hasMore, load, lastVideoOnPageRef }
 }
 
 export default useVideoLoading
